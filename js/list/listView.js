@@ -13,6 +13,10 @@ define(['hbs!js/list/contact-list-item'], function(template) {
         $('.searchbar-cancel').click();
 	}
 
+	function getItemId(object){
+		return $(object).data('id');
+	}
+
 	function bindEvents(bindings) {
 		for (var i in bindings) {
 			$(bindings[i].element).on(bindings[i].event, bindings[i].handler);
@@ -21,6 +25,7 @@ define(['hbs!js/list/contact-list-item'], function(template) {
 
     return {
         render: render,
-		reRender: reRender
+		reRender: reRender,
+		getItemId: getItemId
     };
 });

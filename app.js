@@ -2,7 +2,11 @@ require.config({
     paths: {
         handlebars: "lib/handlebars",
         text: "lib/text",
-        hbs: "lib/hbs"
+        hbs: "lib/hbs",
+        mobile_detect: [
+            '//cdn.jsdelivr.net/mobile-detect.js/1.3.2/mobile-detect.min.js',
+            "lib/mobile-detect"
+        ]
     },
     shim: {
         handlebars: {

@@ -1,5 +1,4 @@
-define(["app", "js/contactModel","js/list/listView"], function(app, Contact, ListView) {
-
+define(["app", "mobile_detect", "js/contactModel", "js/list/listView"], function(app, MobileDetect, Contact, ListView) {
 	/**
 	 * Bindings array. Bind DOM event to some handler function in controller
 	 * @type {*[]}
@@ -16,6 +15,10 @@ define(["app", "js/contactModel","js/list/listView"], function(app, Contact, Lis
 		element: '.list-panel-favorites',
 		event: 'click',
 		handler: showFavorites
+	}, {
+		element: '.item-link',
+		event: 'click',
+		handler: showContact
 	}
 	];
 
@@ -88,6 +91,16 @@ define(["app", "js/contactModel","js/list/listView"], function(app, Contact, Lis
 			return 1;
 		}
 		return -1;
+	}
+
+	function showContact(e) {
+		var id = ListView.getItemId(this);
+		var md = new MobileDetect(window.navigator.userAgent);
+		if (md.mobile()){
+			app.mainView.loadPage('contact.html?id=' + id, false);
+		}else{
+			alert(id);
+		}
 	}
 
     return {
